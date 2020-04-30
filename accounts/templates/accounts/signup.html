@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block pagecontent %}
+
+{% if error %}
+<div class="alert alert-warning" role="alert">
+  {{ error }}
+</div>
+{% endif %}
+
+<h1> Sign up</h1>
+<form method='POST' action='{% url 'signup' %}'>
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="username">Create a username:</label>
+    <br />
+    <input type='text' class="form-control" name='username'/>
+    <br />
+  </div>
+  <div class="row">
+    <div class='col'>
+      <div class="form-group">
+        <label for="password1">Add a secure password:</label>
+        <br />
+        <input type='password' class="form-control" name='password1' />
+        <br />
+      </div>
+    </div>
+    <div class='col'>
+      <div class="form-group">
+        <label for="password2">Confirm your password:</label>
+        <br />
+        <input type='password' class="form-control" name='password2'/>
+        <br />
+      </div>
+    </div>
+  </div>
+    <input type="submit" class="btn btn-primary" value='Sign Up!' />
+</form>
+{% endblock %}
