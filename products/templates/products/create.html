@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block pagecontent %}
+{% if error %}
+<div class="alert alert-warning" role="alert">
+  {{ error }}
+</div>
+{% endif %}
+
+<h1>Add a new fruit to chase!</h1>
+<form method='POST' action='{% url "create" %}' enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="title">Add a title for your post:</label>
+    <br />
+    <input type='text' class="form-control" name='title'/>
+    <br />
+  </div>
+  <div class="form-group">
+    <label for="url">Provide a link to your fruit's website:</label>
+    <br />
+    <input type='url' class="form-control" name='url'/>
+    <br />
+  </div>
+  <div class="form-group">
+    <label for="image">Upload an image:</label>
+    <br />
+    <input type='file' class="form-control" name='image' accept="image/jpeg, image/image/x-png"/>
+    <br />
+  </div>
+  <div class="form-group">
+    <label for="icon">Upload an ICON:</label>
+    <br />
+    <input type='file' class="form-control" name='icon' accept="image/jpeg, image/png, image/svg"/>
+    <br />
+  </div>
+  <div class="form-group">
+    <label for="body">Use this section to describe why your fruit is great:</label>
+    <br />
+    <textarea class="form-control" name='body' rows='6'>
+
+    </textarea>
+    <br />
+  </div>
+    <input type="submit" class="btn btn-primary" value='Submit' />
+</form>
+{% endblock %}
